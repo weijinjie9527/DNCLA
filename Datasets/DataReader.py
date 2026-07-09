@@ -2,14 +2,11 @@ import os
 import pandas as pd
 import numpy as np
 from torch.utils.data import Dataset
-# 确保以下包路径正确
-from wjjtfbs.Initialization.NCP import NCP
-from wjjtfbs.Initialization.DPCP import DPCP
+from Initialization.NCP import NCP
+from Initialization.DPCP import DPCP
 
 class SampleReader:
     def __init__(self, folder_name):
-        # 对应路径：项目根目录/Datasets/data/Sequence/[folder_name]/Sequence/
-        # 使用 os.path.realpath(__file__) 确保从 DataReader.py 所在位置开始查找
         current_dir = os.path.dirname(os.path.realpath(__file__))
         self.seq_path = os.path.join(current_dir, 'data', 'Sequence', folder_name, 'Sequence')
 

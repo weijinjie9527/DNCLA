@@ -1,7 +1,6 @@
 import os
 import sys
 import importlib.util
-sys.path.append('../input')
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -11,8 +10,8 @@ import csv
 from tqdm import tqdm
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_recall_curve, auc
 from torch.utils.data import random_split
-from wjjtfbs.Datasets.DataReader import Datasets
-from wjjtfbs.models.noCNN import CLAModel
+from Datasets.DataReader import Datasets
+from models.noCNN import CLAModel
 
 class Constructor:
     def __init__(self, model_class, dataset_name, variant='noCNN'):

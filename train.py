@@ -1,6 +1,5 @@
 import os
 import sys
-sys.path.append('../input')
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -10,8 +9,8 @@ import csv
 from tqdm.notebook import tqdm
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_recall_curve, auc
 from torch.utils.data import random_split
-from weijinjie.Datasets.DataReader import Datasets
-from weijinjie.models.CLA_TFBS import CLAModel
+from Datasets.DataReader import Datasets
+from models.CLA_TFBS import CLAModel
 
 
 class Constructor:
@@ -39,7 +38,6 @@ class Constructor:
 
         for epoch in range(self.epochs):
             self.model.train()
-            # --- 关键修改：添加实时进度条 ---
             process_bar = tqdm(TrainLoader, unit='batch', mininterval=1.0, leave=False)
             process_bar.set_description(f"Epoch [{epoch + 1}/{self.epochs}]")
 
@@ -94,7 +92,7 @@ class Constructor:
         return self.calculate_metrics(tl, tp)
 
 if __name__ == '__main__':
-    data_list_path = '/kaggle/input/weijinjie/FILESLIST.txt'
+    data_list_path = 'FILESLIST.txt'
     with open(data_list_path, 'r') as f:
         datasets = [line.strip() for line in f if line.strip()]
 
